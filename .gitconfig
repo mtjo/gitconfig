@@ -1,0 +1,31 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	mylog = log --color  --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --no-merges --abbrev-commit --author  韦洪将
+	mycommit = log --pretty=format:'%Cred%h%Creset'  --no-merges --abbrev-commit --author  韦洪将
+	export =  "!f() { gitexport $@; }; f"
+	rt = "!f() { git reset HEAD~$1; }; f"
+	st = status
+	ad = add
+	df = diff
+	co = checkout
+	ci = commit
+	br = branch
+	unstage = reset HEAD
+	last = log -1
+	diffall = git-diffall
+[diff]
+	tool = meld
+	external = git-meld.sh
+
+[difftool]
+	prompt = false
+[difftool "meld"]
+	trustExitCode = true
+	cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+[merge]
+	tool = meld
+[mergetool]
+	prompt = false
+[mergetool "meld"]
+	trustExitCode = true
+	cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
